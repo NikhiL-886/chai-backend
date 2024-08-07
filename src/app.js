@@ -7,10 +7,20 @@ app.use(cors({
     credentials:true
 }))
 
-app.use(express.json({limit:"16kb"}))
+app.use((req, res, next) => {
+    console.log('--- Incoming Request ---');
+    console.log('Method:', req.method);
+    console.log('URL:', req.url);
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    next();
+});
+
+app.use(express.json())
 app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
+
 
 // routes import
 import userRouter from './routes/user.routes.js'
