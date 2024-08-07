@@ -29,15 +29,17 @@ const userSchema = new mongoose.Schema({
         required:true,
       
     },
-    avatar:{
+    coverImage:{
         type:String,//cloudinary url      
-    },
-    watchHistory:[
+    } ,
+     watchHistory:[
         {
-            type:Schema.Types.Schema.ObjectId,
+            type:Schema.Types.ObjectId,
             ref:"Video"
         }
-    ],
+    ]
+
+  ,
     password:{
         type:String,
         required:[true,'Password is required']
